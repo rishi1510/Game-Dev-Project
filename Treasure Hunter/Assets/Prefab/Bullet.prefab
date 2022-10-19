@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 1859516524498386985, guid: 0183e6a2c9c774b48a285d56f7204d76, type: 3}
   damage: 0
+  popup: {fileID: 6527096060392410469, guid: 490d7ac903951444493137877d43f576, type: 3}

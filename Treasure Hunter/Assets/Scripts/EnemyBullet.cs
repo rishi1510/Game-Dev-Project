@@ -6,6 +6,8 @@ public class EnemyBullet : MonoBehaviour
 {
     public GameObject hitEffect;
     public float damage;
+    public GameObject popup;
+    
     void OnCollisionEnter2D(Collision2D collision) {
         if(collision.collider.tag != "Enemy") {
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
@@ -15,6 +17,8 @@ public class EnemyBullet : MonoBehaviour
 
         if(collision.collider.tag == "Player") {
             PlayerStats.playerStats.dealDamage(damage);
+
+            popup.GetComponent<DamagePopup>().Create(transform.position, damage, 2);
         }
     }
 }

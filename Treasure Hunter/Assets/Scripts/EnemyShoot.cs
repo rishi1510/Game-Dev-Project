@@ -8,7 +8,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform firePoint;
     public Transform player;
     public float bulletForce = 20;
-    public float damage = 20;
+    public float minDamage = 2, maxDamage = 15;
     public float minCoolDown, maxCooldown;
     public float range;
 
@@ -33,7 +33,7 @@ public class EnemyShoot : MonoBehaviour
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-            bullet.GetComponent<EnemyBullet>().damage = damage;
+            bullet.GetComponent<EnemyBullet>().damage = (int) Random.Range(minDamage, maxDamage);
         }
 
         StartCoroutine(ShootPlayer());

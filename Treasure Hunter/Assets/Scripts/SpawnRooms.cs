@@ -11,7 +11,6 @@ public class SpawnRooms : MonoBehaviour
     public int gridR, gridC;
     public int numRooms;
     public int endRooms;
-    public GameObject Player;
 
     void Start()
     {
@@ -102,7 +101,7 @@ public class SpawnRooms : MonoBehaviour
             for(int i=0; i<gridR; i++) {
                 for(int j=0; j<gridC; j++) {
                     if(grid[i, j] == 1) {
-                        Vector3 position = new Vector3((i-(gridR/2)) * 19, (j-(gridC/2)) * 19, 0);
+                        Vector3 position = new Vector3((i-(gridR/2)) * 20, (j-(gridC/2)) * 20, 0);
                         GameObject room = Instantiate(square, position, Quaternion.identity);
                         room.GetComponent<RoomData>().xCoord = i;
                         room.GetComponent<RoomData>().yCoord = j;

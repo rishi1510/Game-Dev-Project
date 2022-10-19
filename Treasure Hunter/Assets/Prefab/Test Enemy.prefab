@@ -198,7 +198,8 @@ MonoBehaviour:
   firePoint: {fileID: 1722641165112650838}
   player: {fileID: 3070591779960952726, guid: 6dd0eea3aa2f7401194584f2da1f6d5f, type: 3}
   bulletForce: 10
-  damage: 5
+  minDamage: 5
+  maxDamage: 15
   minCoolDown: 0.5
   maxCooldown: 3
   range: 10

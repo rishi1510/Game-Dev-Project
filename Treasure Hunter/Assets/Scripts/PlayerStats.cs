@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PlayerStats : MonoBehaviour
     private void checkDeath() {
         if(health <= 0) {
             Destroy(player);
+            SceneManager.LoadScene(0);
         }
     }
 }

@@ -7,7 +7,8 @@ public class Shoot : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletForce = 20;
-    public float damage = 20;
+    public float minDamage = 20;
+    public float maxDamage = 50;
  
     void Update() {
         if(Input.GetButtonDown("Fire1")) {
@@ -19,6 +20,6 @@ public class Shoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-        bullet.GetComponent<Bullet>().damage = damage;
+        bullet.GetComponent<Bullet>().damage = (int) Random.Range(minDamage, maxDamage);
     }
 }
