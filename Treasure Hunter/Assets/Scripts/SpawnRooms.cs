@@ -7,8 +7,10 @@ public class SpawnRooms : MonoBehaviour
 {
 
     public GameObject square;
-    public int[,] grid = new int[15,15];
+    public int[,] grid;
+    public int gridR, gridC;
     public int numRooms;
+    public int endRooms;
     public GameObject Player;
 
     void Start()
@@ -29,15 +31,16 @@ public class SpawnRooms : MonoBehaviour
     }
 
     private void createLayout() {
+        grid = new int[100, 100];
         int x, y, rand;
-        x = 5;
-        y = 5;
-        grid[5,5] = 1;
+        x = gridR/2;
+        y = gridC/2;
+        grid[x, y] = 1;
 
         List<int[]> createdRooms = new List<int[]>();
         List<int[]> possibleRooms = new List<int[]>();
 
-        createdRooms.Add(new int[] {5,5});
+        createdRooms.Add(new int[] {gridR/2, gridC/2});
         
         for(int n=1; n<numRooms; n++) {
             createdRooms.ForEach(delegate(int[] room) {
@@ -64,21 +67,64 @@ public class SpawnRooms : MonoBehaviour
             possibleRooms.RemoveAt(rand);
 
             grid[x, y] = 1;
-
-            possibleRooms.RemoveAt(0);
         }
 
+        int numSurrounding = 0;
+        int numEndrooms = 0;
         for(int i=0; i<15; i++) {
             for(int j=0; j<15; j++) {
-                if(grid[i, j] == 1) {
-                    Vector3 position = new Vector3((i-5) * 20, (j-5) * 20, 0);
-                    Instantiate(square, position, Quaternion.identity);
+                if(grid[i,j] == 1) {
+                    if(grid[i-1,j] == 1) {
+                        numSurrounding++;
+                    } 
+                    if(grid[i+1,j] == 1) {
+                        numSurrounding++;
+                    } 
+                    if(grid[i,j-1] == 1) {
+                        numSurrounding++;
+                    } 
+                    if(grid[i,j+1] == 1) {
+                        numSurrounding++;
+                    } 
+
+                    if(numSurrounding == 1) {
+                        numEndrooms++;
+                    }
                 }
+                numSurrounding = 0;
             }
         }
 
-        Vector3 playerPos = new Vector3(0, 0, 0);
+        if(numEndrooms < endRooms) {
+            createLayout();
+        }
+        else {
+            for(int i=0; i<gridR; i++) {
+                for(int j=0; j<gridC; j++) {
+                    if(grid[i, j] == 1) {
+                        Vector3 position = new Vector3((i-(gridR/2)) * 19, (j-(gridC/2)) * 19, 0);
+                        GameObject room = Instantiate(square, position, Quaternion.identity);
+                        room.GetComponent<RoomData>().xCoord = i;
+                        room.GetComponent<RoomData>().yCoord = j;
 
-        //Instantiate(Player, playerPos, Quaternion.identity);
+                        if(grid[i-1,j] == 0) {
+                            room.GetComponent<RoomData>().left = true;
+                        }
+
+                        if(grid[i+1, j] == 0) {
+                            room.GetComponent<RoomData>().right = true;
+                        }
+
+                        if(grid[i, j+1] == 0) {
+                            room.GetComponent<RoomData>().top = true;
+                        }
+
+                        if(grid[i, j-1] == 0) {
+                            room.GetComponent<RoomData>().bottom = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

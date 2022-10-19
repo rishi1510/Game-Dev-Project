@@ -10,6 +10,7 @@ public class EnemyShoot : MonoBehaviour
     public float bulletForce = 20;
     public float damage = 20;
     public float minCoolDown, maxCooldown;
+    public float range;
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,15 +26,16 @@ public class EnemyShoot : MonoBehaviour
     IEnumerator ShootPlayer() {
         float cooldown = Random.Range(minCoolDown, maxCooldown);
         yield return new WaitForSeconds(cooldown);
-            if(player != null) {
+
+        if(player != null && (Vector3.Distance(player.position, firePoint.position) <= range)) {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Vector2 curPos = firePoint.position;
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
             bullet.GetComponent<EnemyBullet>().damage = damage;
-
-            StartCoroutine(ShootPlayer());
         }
+
+        StartCoroutine(ShootPlayer());
     }
 }
