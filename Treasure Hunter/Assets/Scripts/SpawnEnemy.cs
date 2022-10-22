@@ -20,8 +20,8 @@ public class SpawnEnemy : MonoBehaviour
         numEnemies = Random.Range(2, numEnemies);
 
         if(player != null && (Vector3.Distance(player.position, SpawnPoint.position) <= 10)) {
-            x = Random.Range(-9, 9);
-            y = Random.Range(-9, 9);
+            x = Random.Range(-6, 6);
+            y = Random.Range(-6, 6);
             offset.x = x;
             offset.y = y;
 

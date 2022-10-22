@@ -554,8 +554,8 @@ MonoBehaviour:
   square: {fileID: 1073476149261738071, guid: a268618e5af634d93aa319fed07e6de5, type: 3}
   gridR: 20
   gridC: 20
-  numRooms: 20
-  endRooms: 6
+  numRooms: 12
+  endRooms: 4
 --- !u!114 &2099860426 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8929779834387417863, guid: eb216a417cde64738b7f2da1dd134b06, type: 3}
