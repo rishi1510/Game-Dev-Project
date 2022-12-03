@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnRooms : MonoBehaviour
 {
 
-    public GameObject square;
+    public List<GameObject> roomTemplates;
     public int[,] grid;
     public int gridR, gridC;
     public int numRooms;
@@ -102,7 +102,9 @@ public class SpawnRooms : MonoBehaviour
                 for(int j=0; j<gridC; j++) {
                     if(grid[i, j] == 1) {
                         Vector3 position = new Vector3((i-(gridR/2)) * 20, (j-(gridC/2)) * 20, 0);
-                        GameObject room = Instantiate(square, position, Quaternion.identity);
+                        int randTemplateID = Random.Range(0, roomTemplates.Count);
+
+                        GameObject room = Instantiate(roomTemplates[randTemplateID], position, Quaternion.identity);
                         room.GetComponent<RoomData>().xCoord = i;
                         room.GetComponent<RoomData>().yCoord = j;
 

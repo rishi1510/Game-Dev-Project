@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats playerStats;
     public HealthBar healthBar;
     public GameObject player;
-    public float health, maxHealth;
+    public float health, maxHealth, ammo;
 
     void Awake() {
         if(playerStats != null) {
@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
         else {
             playerStats = this;
         }
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     void Start()
@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         health = maxHealth;
         healthBar.setMaxHealth(health);
+        ammo = 100;
     }
 
     public void dealDamage(float damage) {
@@ -44,7 +45,7 @@ public class PlayerStats : MonoBehaviour
     private void checkDeath() {
         if(health <= 0) {
             Destroy(player);
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
     }
 }

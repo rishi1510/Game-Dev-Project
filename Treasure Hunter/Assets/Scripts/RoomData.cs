@@ -10,7 +10,9 @@ public class RoomData : MonoBehaviour
     
     public Transform spawnpoint;
 
-    public GameObject LWall, RWall, TWall, BWall;
+    public List<GameObject> gates = new List<GameObject>();
+
+    public GameObject LWall, RWall, TWall, BWall, LGate, RGate, BGate, TGate;
 
     void Start() {
         SpawnWalls();
@@ -28,6 +30,25 @@ public class RoomData : MonoBehaviour
         }
         if(bottom) {
             Instantiate(BWall, spawnpoint.position, spawnpoint.rotation);
+        }
+    }
+
+    public void SpawnGates() {
+        if(!left) {
+            GameObject leftGate = Instantiate(LGate, spawnpoint.position, spawnpoint.rotation);
+            gates.Add(leftGate);
+        }
+        if(!right) {
+            GameObject rightGate = Instantiate(RGate, spawnpoint.position, spawnpoint.rotation);
+            gates.Add(rightGate);
+        }
+        if(!top) {
+            GameObject topGate = Instantiate(TGate, spawnpoint.position, spawnpoint.rotation);
+            gates.Add(topGate);
+        }
+        if(!bottom) {
+            GameObject bottomGate = Instantiate(BGate, spawnpoint.position, spawnpoint.rotation);
+            gates.Add(bottomGate);
         }
     }
 }

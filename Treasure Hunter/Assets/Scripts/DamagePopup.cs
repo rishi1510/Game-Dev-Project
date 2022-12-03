@@ -14,11 +14,18 @@ public class DamagePopup : MonoBehaviour
         Transform damagePopupTransform = Instantiate(this.transform, position, Quaternion.identity);
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
 
-        if(owner != 1) {
-           textColor = new Color(1, 0, 0);
-        }
-        else {
+        switch(owner) {
+            case 1:
             textColor = new Color(1, 1, 0);
+            break;
+
+            case 2:
+            textColor = new Color(1, 0, 0);
+            break;
+
+            case 3:
+            textColor = new Color(0, 1, 0);
+            break;
         }
 
         damagePopup.GetComponent<TextMeshPro>().color = textColor;

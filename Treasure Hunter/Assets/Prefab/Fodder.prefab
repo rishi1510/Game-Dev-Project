@@ -46,8 +46,9 @@ GameObject:
   - component: {fileID: 4428414986967902649}
   - component: {fileID: 2510601860012584574}
   - component: {fileID: 3268818003760500218}
+  - component: {fileID: -3436004562331100127}
   m_Layer: 10
-  m_Name: Test Enemy
+  m_Name: Fodder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 05e59ff820578492a94bc502605dac15, type: 3}
-  m_Color: {r: 1, g: 0.039275132, b: 0, a: 1}
+  m_Color: {r: 0.07160783, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 50
 --- !u!114 &2510601860012584574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,12 +198,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8052253724065163806, guid: 5e42a997c7ef3483db19fc4c2e3fef9d, type: 3}
   firePoint: {fileID: 1722641165112650838}
   player: {fileID: 3070591779960952726, guid: 6dd0eea3aa2f7401194584f2da1f6d5f, type: 3}
-  bulletForce: 10
-  minDamage: 5
-  maxDamage: 15
-  minCoolDown: 0.5
-  maxCooldown: 3
-  range: 10
+  bulletForce: 20
+  minDamage: 2
+  maxDamage: 5
+  minCoolDown: 0.2
+  maxCooldown: 1
 --- !u!114 &3268818003760500218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +217,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1722641165892726917}
   player: {fileID: 3070591779960952726, guid: 6dd0eea3aa2f7401194584f2da1f6d5f, type: 3}
+--- !u!114 &-3436004562331100127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722641165892726919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29401334f29cd426d8afcdcca5e43f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - item: {fileID: 2821704641167474933, guid: febe0e7704d5c4490ab5aa4df44eda09, type: 3}
+    dropChance: 20
+  possibleDrops: []

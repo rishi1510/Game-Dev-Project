@@ -10,8 +10,7 @@ public class EnemyShoot : MonoBehaviour
     public float bulletForce = 20;
     public float minDamage = 2, maxDamage = 15;
     public float minCoolDown, maxCooldown;
-    public float range;
-
+    
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(ShootPlayer());
@@ -27,7 +26,7 @@ public class EnemyShoot : MonoBehaviour
         float cooldown = Random.Range(minCoolDown, maxCooldown);
         yield return new WaitForSeconds(cooldown);
 
-        if(player != null && (Vector3.Distance(player.position, firePoint.position) <= range)) {
+        if(player != null) {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Vector2 curPos = firePoint.position;
 

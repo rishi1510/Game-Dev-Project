@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ReceiveDamage : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ReceiveDamage : MonoBehaviour
 
     private void checkDeath() {
         if(health <= 0) {
+            gameObject.GetComponent<LootBag>().instantiateLoot(transform.position);
+            
             Destroy(gameObject);
         }
     }
