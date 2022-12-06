@@ -8,8 +8,17 @@ public class MovePlayer : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement, mousePos;
     public GameObject crosshairPrefab, crosshair;
+    private float activeMoveSpeed;
+    public float dashSpeed, dashLength = 0.5f, dashCooldown = 1f;
+    private float dashCount, dashCoolCounter;
+    public bool isDashing;
+    public TrailRenderer trailRenderer;
+
+
 
     void Start() {
+        activeMoveSpeed = moveSpeed;
+        isDashing = false;
         crosshair = Instantiate(crosshairPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
     }
 
@@ -19,10 +28,34 @@ public class MovePlayer : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            if(dashCoolCounter <= 0 && dashCount <= 0) {
+                activeMoveSpeed = dashSpeed;
+                dashCount = dashLength;
+                trailRenderer.emitting = true;
+                isDashing = true;
+            }
+        }
+
+        if(dashCount > 0) {
+            dashCount -= Time.deltaTime;
+
+            if(dashCount <= 0) {
+                activeMoveSpeed = moveSpeed;
+                dashCoolCounter = dashCooldown;
+                trailRenderer.emitting = false;
+                isDashing = false;
+            }
+        }
+
+        if(dashCoolCounter > 0) {
+            dashCoolCounter -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate() {
-        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement.normalized * activeMoveSpeed * Time.fixedDeltaTime);
 
         crosshair.transform.position = mousePos;
 

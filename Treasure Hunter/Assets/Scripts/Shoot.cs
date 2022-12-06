@@ -36,6 +36,7 @@ public class Shoot : MonoBehaviour
         }
 
         if(Input.GetButton("Fire1") && Time.time > nextFire && PlayerStats.playerStats.ammo >= 1) {
+            nextFire = Time.time + fireRate;
             if(fireMode == 2 && PlayerStats.playerStats.ammo >= 3) {
                 fireSpread();
 
@@ -43,7 +44,6 @@ public class Shoot : MonoBehaviour
             else {
                 fireBullet();
             }
-            nextFire = Time.time + fireRate;
         }
     }
 
@@ -52,6 +52,8 @@ public class Shoot : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         bullet.GetComponent<Bullet>().damage = (int) Random.Range(minDamage, maxDamage);
+
+        PlayerStats.playerStats.setAmmo(1);
     }
 
     void fireSpread() {
@@ -71,5 +73,7 @@ public class Shoot : MonoBehaviour
         bullet3.transform.Rotate(0, 0, -10);
         rb3.AddForce(bullet3.transform.up * bulletForce, ForceMode2D.Impulse);
         bullet3.GetComponent<Bullet>().damage = (int) Random.Range(minDamage, maxDamage);
+
+        PlayerStats.playerStats.setAmmo(3);
     }
 }

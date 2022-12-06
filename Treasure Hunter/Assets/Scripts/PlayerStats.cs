@@ -7,8 +7,9 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats playerStats;
     public HealthBar healthBar;
+    public AmmoCount ammoCount;
     public GameObject player;
-    public float health, maxHealth, ammo;
+    public float health, maxHealth, ammo, maxAmmo, clearedRooms = 0;
 
     void Awake() {
         if(playerStats != null) {
@@ -25,7 +26,9 @@ public class PlayerStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         health = maxHealth;
         healthBar.setMaxHealth(health);
-        ammo = 100;
+        ammo = maxAmmo;
+        ammoCount.setAmmoCount(ammo, maxAmmo);
+        clearedRooms = 0;
     }
 
     public void dealDamage(float damage) {
@@ -40,6 +43,22 @@ public class PlayerStats : MonoBehaviour
             health = maxHealth;
         }
         healthBar.setHealth(health);
+    }
+
+    public void setAmmo(float val) {
+        ammo -= val;
+        if(ammo < 0) {
+            ammo = 0;
+        }
+        ammoCount.setAmmoCount(ammo, maxAmmo);
+    }
+
+    public void ammoPickup(float val) {
+        ammo += val;
+        if(ammo > maxAmmo) {
+            ammo = maxAmmo;
+        }
+        ammoCount.setAmmoCount(ammo, maxAmmo);
     }
 
     private void checkDeath() {

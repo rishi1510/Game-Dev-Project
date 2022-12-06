@@ -7,7 +7,7 @@ public class LootBag : MonoBehaviour
     public List<Loot> items = new List<Loot>();
     public List<Loot> possibleDrops = new List<Loot>();
 
-    private Loot getLoot() {
+    private List<Loot> getLoot() {
         int rand = Random.Range(1, 101);
 
         possibleDrops.Clear();
@@ -18,18 +18,31 @@ public class LootBag : MonoBehaviour
         }
 
         if(possibleDrops.Count > 0) {
-            Loot drop = possibleDrops[Random.Range(0, possibleDrops.Count)];
-            return drop;
+            //Loot drop = possibleDrops[Random.Range(0, possibleDrops.Count)];
+            //return drop;
+
+            return possibleDrops;
         }
+
+        
 
         Debug.Log(possibleDrops.Count);
         return null;
     }
 
     public void instantiateLoot(Vector3 pos) {
-        Loot drop = getLoot();
-        if(drop != null) {
+        List<Loot> drops = getLoot();
+        /*if(drop != null) {
             Instantiate(drop.item, pos, Quaternion.identity);
+        }*/
+
+        if(drops == null) {
+            return;
+        }
+
+        foreach(Loot drop in drops) {
+            GameObject item = Instantiate(drop.item, transform.position, Quaternion.identity);
+            item.transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 1f), 0), 0.5f);
         }
     }
 }

@@ -226,10 +226,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722641165892726919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29401334f29cd426d8afcdcca5e43f75, type: 3}
+  m_Script: {fileID: 11500000, guid: 3808a1a1fd3ce4b7685e2af8bbe113de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 2821704641167474933, guid: febe0e7704d5c4490ab5aa4df44eda09, type: 3}
     dropChance: 20
+  - item: {fileID: 2821704641167474933, guid: dea6b1cb686da4129996006e7dbd2fbd, type: 3}
+    dropChance: 100
   possibleDrops: []

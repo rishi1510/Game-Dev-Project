@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
 
     public ColliderTrigger colliderTrigger;
 
-    public int curWave = 0;
+    public int curWave = 1;
     public int waveVal;
 
     public List<Transform> SpawnLocations = new List<Transform>();
@@ -55,6 +55,7 @@ public class WaveSpawner : MonoBehaviour
         if(state != State.Finished && battleOver() && curWave > numWaves) {
             state = State.Finished;
             removeGates();
+            PlayerStats.playerStats.clearedRooms++;
         }
     }
 
@@ -65,6 +66,7 @@ public class WaveSpawner : MonoBehaviour
             colliderTrigger.OnPlayerEnterTrigger -= ColliderTrigger_OnPlayerEnterTrigger;
             curWave += 1;
             GenerateWave();
+
         }   
     }
 

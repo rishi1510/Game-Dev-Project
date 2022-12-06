@@ -15,9 +15,8 @@ public class EnemyBullet : MonoBehaviour
             Destroy(effect, (float)0.333);
         }
 
-        if(collision.collider.tag == "Player") {
+        if(collision.collider.tag == "Player" && collision.collider.GetComponent<MovePlayer>().isDashing == false) {
             PlayerStats.playerStats.dealDamage(damage);
-
             popup.GetComponent<DamagePopup>().Create(transform.position, damage, 2);
         }
     }
