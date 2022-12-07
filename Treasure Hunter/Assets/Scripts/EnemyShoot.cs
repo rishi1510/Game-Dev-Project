@@ -10,7 +10,9 @@ public class EnemyShoot : MonoBehaviour
     public float bulletForce = 20;
     public float minDamage = 2, maxDamage = 15;
     public float minCoolDown, maxCooldown;
-    
+    public float rotation = 0;
+
+
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(ShootPlayer());
@@ -27,7 +29,7 @@ public class EnemyShoot : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
 
         if(player != null) {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * Quaternion.Euler(0, 0, rotation));
             Vector2 curPos = firePoint.position;
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

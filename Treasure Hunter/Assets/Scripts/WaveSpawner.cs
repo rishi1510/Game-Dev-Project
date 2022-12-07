@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
 
     public ColliderTrigger colliderTrigger;
 
-    public int curWave = 1;
+    public int curWave;
     public int waveVal;
 
     public List<Transform> SpawnLocations = new List<Transform>();
@@ -39,20 +39,21 @@ public class WaveSpawner : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         colliderTrigger.OnPlayerEnterTrigger += ColliderTrigger_OnPlayerEnterTrigger;
+        curWave = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(state == State.Active && waveTimer >= 0 && curWave <= numWaves) {
+        if(state == State.Active && waveTimer >= 0 && curWave < numWaves) {
             waveTimer -= Time.deltaTime;
             if(waveTimer <= 0 || battleOver()) {
-                curWave += 1;
                 GenerateWave();
+                curWave ++;
             }
         }
 
-        if(state != State.Finished && battleOver() && curWave > numWaves) {
+        if(state != State.Finished && battleOver() && curWave >= numWaves) {
             state = State.Finished;
             removeGates();
             PlayerStats.playerStats.clearedRooms++;
@@ -64,9 +65,18 @@ public class WaveSpawner : MonoBehaviour
             spawnGates();
             state = State.Active;
             colliderTrigger.OnPlayerEnterTrigger -= ColliderTrigger_OnPlayerEnterTrigger;
-            curWave += 1;
             GenerateWave();
+            curWave = 1;
 
+            if(PlayerStats.playerStats.clearedRooms < 3) {
+                numWaves = 2;
+            }
+            else  if(PlayerStats.playerStats.clearedRooms < 6){
+                numWaves = 3;
+            }
+            else {
+                numWaves = 4;
+            }
         }   
     }
 

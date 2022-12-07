@@ -10,7 +10,7 @@ public class LootBag : MonoBehaviour
     private List<Loot> getLoot() {
         int rand = Random.Range(1, 101);
 
-        possibleDrops.Clear();
+        possibleDrops = new List<Loot>();
         foreach(Loot item in items) {
             if(rand <= item.dropChance) {
                 possibleDrops.Add(item);

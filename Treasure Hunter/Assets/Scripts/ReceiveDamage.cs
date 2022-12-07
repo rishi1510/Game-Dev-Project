@@ -6,6 +6,9 @@ using System;
 public class ReceiveDamage : MonoBehaviour
 {
     public float health, maxHealth;
+
+    public GameObject deathEffect;
+
     void Start()
     {
         health = maxHealth;
@@ -19,8 +22,14 @@ public class ReceiveDamage : MonoBehaviour
     private void checkDeath() {
         if(health <= 0) {
             gameObject.GetComponent<LootBag>().instantiateLoot(transform.position);
-            
+
+            GameObject effect = Instantiate(deathEffect, transform.position, transform.rotation);
+            if(GetComponent<SpriteRenderer>().flipX == true) {
+                effect.GetComponent<SpriteRenderer>().flipX = true;
+            }
+
             Destroy(gameObject);
+            Destroy(effect, (float)0.75);
         }
     }
 }
