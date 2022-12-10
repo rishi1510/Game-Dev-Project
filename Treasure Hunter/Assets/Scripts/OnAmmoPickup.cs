@@ -8,7 +8,7 @@ public class OnAmmoPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.name == "Player") {
-            ammo = Random.Range(1, 11);
+            ammo = Random.Range(5, 11);
 
             PlayerStats.playerStats.ammoPickup(ammo);
 

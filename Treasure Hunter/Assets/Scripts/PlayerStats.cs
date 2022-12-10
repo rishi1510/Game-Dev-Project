@@ -7,9 +7,13 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats playerStats;
     public HealthBar healthBar;
+    public ClearedRooms rooms;
     public AmmoCount ammoCount;
+    public Timer timer;
+    public GameOverPanel gameOverPanel;
     public GameObject player;
-    public float health, maxHealth, ammo, maxAmmo, clearedRooms = 0;
+    public float health, maxHealth, ammo, maxAmmo, clearedRooms = 0, numRooms;
+    public SpawnRooms spawnRooms;
 
     void Awake() {
         if(playerStats != null) {
@@ -29,6 +33,8 @@ public class PlayerStats : MonoBehaviour
         ammo = maxAmmo;
         ammoCount.setAmmoCount(ammo, maxAmmo);
         clearedRooms = 0;
+        numRooms = spawnRooms.numRooms;
+        rooms.setRoomNo(0, numRooms);
     }
 
     public void dealDamage(float damage) {
@@ -61,10 +67,17 @@ public class PlayerStats : MonoBehaviour
         ammoCount.setAmmoCount(ammo, maxAmmo);
     }
 
+    public void updateRoomCount() {
+        rooms.setRoomNo(clearedRooms, numRooms);
+    }
+
     private void checkDeath() {
         if(health <= 0) {
             Destroy(player);
             //SceneManager.LoadScene(0);
+            timer.stopTimer = true;
+            gameOverPanel.gameOver();
+            Cursor.visible = true;
         }
     }
 }

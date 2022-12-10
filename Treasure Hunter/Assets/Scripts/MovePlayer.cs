@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class MovePlayer : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Escape key was pressed");
+        }
+
 
         if(Input.GetKeyDown(KeyCode.Space)) {
             if(dashCoolCounter <= 0 && dashCount <= 0) {

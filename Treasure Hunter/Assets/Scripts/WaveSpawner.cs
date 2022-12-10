@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour
     private float spawnInterval;
     private float spawnTimer;
     private Vector3 offset;
+    public GameObject chest;
 
     private enum State {
         Idle, 
@@ -57,6 +58,11 @@ public class WaveSpawner : MonoBehaviour
             state = State.Finished;
             removeGates();
             PlayerStats.playerStats.clearedRooms++;
+
+            PlayerStats.playerStats.updateRoomCount();
+
+            Instantiate(chest, GetComponent<RoomData>().spawnpoint.transform.position, GetComponent<RoomData>().spawnpoint.rotation);
+
         }
     }
 

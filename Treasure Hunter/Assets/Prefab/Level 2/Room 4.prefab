@@ -1004,6 +1004,7 @@ MonoBehaviour:
   - {fileID: 2156348611836090596}
   numWaves: 2
   waveDuration: 5
+  chest: {fileID: 6397703289263645183, guid: 5dfc9c1ea16dc4890adc92a26cf8b741, type: 3}
 --- !u!61 &3876971296076513743
 BoxCollider2D:
   m_ObjectHideFlags: 0
