@@ -11,7 +11,7 @@ public class EnemyShoot : MonoBehaviour
     public float minDamage = 2, maxDamage = 15;
     public float minCoolDown, maxCooldown;
     public float rotation = 0;
-    public bool spreadShot;
+    public bool spreadShot, canShoot;
 
 
     void Start() {

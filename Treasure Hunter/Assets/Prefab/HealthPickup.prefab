@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  type: 1
   popup: {fileID: 6527096060392410469, guid: 490d7ac903951444493137877d43f576, type: 3}
 --- !u!114 &4850316217449135491
 MonoBehaviour:

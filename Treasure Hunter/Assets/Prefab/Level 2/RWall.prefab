@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3597043128041106374}
   - component: {fileID: 7389829988612400386}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 2030027401330978845}
   - component: {fileID: 7633767666820293109}
   - component: {fileID: 3039985332824145642}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,9 +315,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2583133808973513809}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

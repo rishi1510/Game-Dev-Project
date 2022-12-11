@@ -7,15 +7,24 @@ public class RoomData : MonoBehaviour
     public int xCoord;
     public int yCoord;
     public bool left = false, right = false, top = false, bottom = false;
+    public bool bossRoom, keyRoom;
     
     public Transform spawnpoint;
 
     public List<GameObject> gates = new List<GameObject>();
 
-    public GameObject LWall, RWall, TWall, BWall, LGate, RGate, BGate, TGate;
+    public GameObject LWall, RWall, TWall, BWall, LGate, RGate, BGate, TGate, key;
 
     void Start() {
         SpawnWalls();
+
+        if(bossRoom) {
+            SpawnGates();
+        }
+
+        if(keyRoom) {
+            Instantiate(key, spawnpoint.position, spawnpoint.rotation);
+        }
     }
 
     private void SpawnWalls() {

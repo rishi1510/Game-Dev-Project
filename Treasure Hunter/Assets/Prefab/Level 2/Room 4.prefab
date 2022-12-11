@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 2584040000810513610}
   m_Layer: 0
   m_Name: Room 4
-  m_TagString: Rooms
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -954,6 +954,8 @@ MonoBehaviour:
   right: 0
   top: 0
   bottom: 0
+  bossRoom: 0
+  keyRoom: 0
   spawnpoint: {fileID: 4077011474684219325}
   gates: []
   LWall: {fileID: 1629900644956456909, guid: 53c753ba09b8646c0b9df85781ff4ecd, type: 3}
@@ -964,6 +966,7 @@ MonoBehaviour:
   RGate: {fileID: 1876073178419148456, guid: 05636f567c83c48c3a86cd634b2c3352, type: 3}
   BGate: {fileID: 4720762990559601700, guid: 1690caa55a2ef4551aa0c5ec22c78f5d, type: 3}
   TGate: {fileID: 809570158079355672, guid: e0350d6d9e9a046669bbf636db7f1a58, type: 3}
+  key: {fileID: 360985293062553616, guid: 027d34219581b489c940c231e005edcf, type: 3}
 --- !u!114 &2610028603163396480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4976,9 +4979,9 @@ GameObject:
   - component: {fileID: 7464002485775798114}
   - component: {fileID: 8421684486942264288}
   - component: {fileID: 1592652068369921795}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Items
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5573,9 +5576,9 @@ GameObject:
   - component: {fileID: 5217485264038712597}
   - component: {fileID: 3840988375959297780}
   - component: {fileID: 5791029423731694163}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Items (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5877,9 +5880,9 @@ GameObject:
   - component: {fileID: 6851733786892912983}
   - component: {fileID: 204446170728728799}
   - component: {fileID: 5489539924749548872}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

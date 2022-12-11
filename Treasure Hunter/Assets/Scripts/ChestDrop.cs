@@ -13,13 +13,11 @@ public class ChestDrop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if(!isOpen) {
-            GetComponent<SpriteRenderer>().sprite = chestOpen;
-
             if(collider.name == "Player") {
-                GetComponent<LootBag>().instantiateLoot(transform.position);
+                GetComponent<SpriteRenderer>().sprite = chestOpen;
+                GetComponent<LootBag>().instantiateChestLoot(transform.position);
+                isOpen = true;
             }
-
-            isOpen = true;
         }
     }
 }

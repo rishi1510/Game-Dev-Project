@@ -61,8 +61,11 @@ public class WaveSpawner : MonoBehaviour
 
             PlayerStats.playerStats.updateRoomCount();
 
-            Instantiate(chest, GetComponent<RoomData>().spawnpoint.transform.position, GetComponent<RoomData>().spawnpoint.rotation);
+            if(GetComponent<RoomData>().keyRoom == false) {
+                Instantiate(chest, GetComponent<RoomData>().spawnpoint.transform.position, GetComponent<RoomData>().spawnpoint.rotation);
+            }
 
+            PlayerStats.playerStats.inBattle = false;
         }
     }
 
@@ -83,6 +86,8 @@ public class WaveSpawner : MonoBehaviour
             else {
                 numWaves = 4;
             }
+
+            PlayerStats.playerStats.inBattle = true;
         }   
     }
 
@@ -108,7 +113,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public void GenerateWave() {
-        waveVal = curWave + 2;
+        waveVal = curWave + 2 + (int)(PlayerStats.playerStats.clearedRooms/2);
         GenerateEnemies();
 
         spawnInterval = 0;
@@ -117,14 +122,16 @@ public class WaveSpawner : MonoBehaviour
 
     public void GenerateEnemies() {
         List<GameObject> generatedEnemies = new List<GameObject>();
+        int numEnemies = 0;
 
-        while(waveVal > 0) {
+        while(waveVal > 0 && numEnemies <= 5) {
             int randEnemyID = Random.Range(0, enemies.Count);
             int randEnemyCost = enemies[randEnemyID].cost;
 
             if(waveVal - randEnemyCost >= 0) {
                 generatedEnemies.Add(enemies[randEnemyID].enemyPrefab);
                 waveVal -= randEnemyCost;
+                numEnemies++;
             }
             else if(waveVal <= 0) {
                 break;
@@ -136,10 +143,12 @@ public class WaveSpawner : MonoBehaviour
 
         List<Transform> possibleSpawns = SpawnLocations;
         foreach(GameObject enemy in enemiesToSpawn) {
-            int spawnID = Random.Range(0, possibleSpawns.Count);
-            spawnedEnemies.Add(Instantiate(enemy, possibleSpawns[spawnID].position, possibleSpawns[spawnID].rotation));
+            if(possibleSpawns.Count > 0) {
+                int spawnID = Random.Range(0, possibleSpawns.Count);
+                spawnedEnemies.Add(Instantiate(enemy, possibleSpawns[spawnID].position, possibleSpawns[spawnID].rotation));
 
-            possibleSpawns.RemoveAt(spawnID);
+                possibleSpawns.RemoveAt(spawnID);
+            }
         }
         enemiesToSpawn.Clear();
     }

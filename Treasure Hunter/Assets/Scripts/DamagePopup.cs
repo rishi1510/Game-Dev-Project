@@ -35,12 +35,28 @@ public class DamagePopup : MonoBehaviour
         return damagePopup;
     }
 
+    public DamagePopup Create(Vector3 position, string text) {
+        Transform damagePopupTransform = Instantiate(this.transform, position, Quaternion.identity);
+        DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
+
+        textColor = new Color(1, 1, 1);
+        damagePopup.GetComponent<TextMeshPro>().color = textColor;
+
+        damagePopup.Setup(text);
+
+        return damagePopup;
+    }
+
     private void Awake() {
         textmesh = transform.GetComponent<TextMeshPro>();
     }
 
     public void Setup(float damageAmount) {
         textmesh.SetText(damageAmount.ToString());
+    }
+
+    public void Setup(string text) {
+        textmesh.SetText(text);
     }
 
     void Update() {
