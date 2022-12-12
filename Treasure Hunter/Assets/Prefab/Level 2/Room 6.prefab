@@ -985,6 +985,10 @@ MonoBehaviour:
     cost: 1
   - enemyPrefab: {fileID: 8023118399660557180, guid: 74e9df8ec849c4a56a2ee9d14da4bc27, type: 3}
     cost: 2
+  - enemyPrefab: {fileID: 8005585002329258964, guid: 614eda3c418a84f2d8cc34aa97c79f0a, type: 3}
+    cost: 3
+  - enemyPrefab: {fileID: 8023118399660557180, guid: 63924db067acc49ac8a22b6f1ef0543a, type: 3}
+    cost: 4
   enemiesToSpawn: []
   spawnedEnemies: []
   colliderTrigger: {fileID: 2584040000810513610}

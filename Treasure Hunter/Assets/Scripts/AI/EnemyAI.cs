@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //Attack logic
                 animator.SetBool("isRunning", false);
-                movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviors, aiData) * -1;
+                movementInput = Vector2.zero;
                 OnAttackPressed?.Invoke();
                 yield return new WaitForSeconds(attackDelay);
                 StartCoroutine(ChaseAndAttack());

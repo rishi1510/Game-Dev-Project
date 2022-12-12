@@ -131,7 +131,7 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   showGizmos: 1
 --- !u!1 &3222064638992029494
 GameObject:
@@ -551,7 +551,7 @@ SpriteRenderer:
   m_SortingLayerID: 1814572833
   m_SortingLayer: 4
   m_SortingOrder: 12
-  m_Sprite: {fileID: -813671066, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
+  m_Sprite: {fileID: -2101705817, guid: 01ca64bd517f342f6a0a29f2decf2c4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -579,20 +579,6 @@ MonoBehaviour:
   minHeight: -0.08
   moveSpeed: 0.002
   heldItems:
-  - itemSprite: {fileID: -813671066, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: 2070017362, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: 1577176826, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: -1076411712, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: -1106258921, guid: 65f25fba2b15f4553a17e2658479e1da, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: -2101705817, guid: 01ca64bd517f342f6a0a29f2decf2c4c, type: 3}
-    flipX: 0
-  - itemSprite: {fileID: -2101705817, guid: 01ca64bd517f342f6a0a29f2decf2c4c, type: 3}
-    flipX: 0
   - itemSprite: {fileID: -2101705817, guid: 01ca64bd517f342f6a0a29f2decf2c4c, type: 3}
     flipX: 0
 --- !u!1 &7534711717902798307
@@ -693,7 +679,7 @@ GameObject:
   - component: {fileID: 7723259751092277109}
   - component: {fileID: 2661374511636393026}
   m_Layer: 10
-  m_Name: Ranged Skeleton
+  m_Name: Skeleton Normal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

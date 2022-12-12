@@ -229,7 +229,7 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   showGizmos: 1
 --- !u!1 &3561763309717125119
 GameObject:
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 5567365545690626577}
   - component: {fileID: 1251554283330144232}
   m_Layer: 10
-  m_Name: Ranged Orc
+  m_Name: Orc Hard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 150
+  maxHealth: 300
   deathEffect: {fileID: 3452412699239003006, guid: 6eb21a9f655854fb19373a38a4ac47fe, type: 3}
 --- !u!114 &6514643474843114885
 MonoBehaviour:
@@ -811,9 +811,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7473142082804315545, guid: e39dfb651895e4d4bab8f400c2d5d92e, type: 3}
   firePoint: {fileID: 8023118399886991277}
   player: {fileID: 6453825277945026060, guid: 894f3fcd556b1465b82cbd58752f8f7b, type: 3}
-  bulletForce: 10
-  minDamage: 15
-  maxDamage: 20
+  bulletForce: 15
+  minDamage: 20
+  maxDamage: 25
   minCoolDown: 1
   maxCooldown: 2
   rotation: 90
@@ -847,9 +847,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 2821704641167474933, guid: febe0e7704d5c4490ab5aa4df44eda09, type: 3}
-    dropChance: 30
+    dropChance: 100
   - item: {fileID: 2821704641167474933, guid: dea6b1cb686da4129996006e7dbd2fbd, type: 3}
-    dropChance: 70
+    dropChance: 100
   powerUps: []
   possibleDrops: []
 --- !u!95 &22054595439390074
